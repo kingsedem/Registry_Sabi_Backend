@@ -13,7 +13,6 @@ import static io.restassured.RestAssured.given;
 import static org.testng.AssertJUnit.assertEquals;
 
 
-
 public class createUsers {
 
     @Test (description = "Create Tenant Owner- Without tenantID")
