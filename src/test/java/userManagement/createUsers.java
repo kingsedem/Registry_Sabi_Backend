@@ -77,4 +77,34 @@ public class createUsers {
         assertEquals(error.getMessage(), "User account already exist with same email or phone, please login!" );
         System.out.println(error.getMessage());
     }
+
+    @Test(description = "Creating user an existing password")
+    public void validate_Creating_User_with_an_existing_password() {
+
+        countryRequest countryRequestData = new countryRequest("Nigeria","NG", "NGN");
+        createUserWithNoTenantIdPostBody createUserPostRequestWithNoTenantId = new createUserWithNoTenantIdPostBody(
+                "cicat65637@agaseo.com",
+                "@Sabisabi123",
+                "TENANT_SUPER_ADMIN",
+                "Kelly",
+                "Jack",
+                countryRequestData,
+                "08061994102");
+
+        String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
+        String createUserEndpoint = JsonReader.getTestData("createUser");
+
+        Response response = given()
+                .header("Content-Type", "application/json")
+                .body(createUserPostRequestWithNoTenantId).log().all()
+                .when()
+                .post(baseUrl + createUserEndpoint);
+
+        int actualStatusCode = response.statusCode();
+        assertEquals(actualStatusCode, StatusCode.BAD_REQUEST.code);
+        ApiError error = new ApiError(StatusCode.BAD_REQUEST, "User account already exist with same email or phone, please login!");
+        //return new ApiResponse(error.getCode(), error.getMessage());
+        assertEquals(error.getMessage(), "User account already exist with same email or phone, please login!" );
+        System.out.println(error.getMessage());
+    }
 }
