@@ -1,19 +1,16 @@
 package core;
 
 public enum StatusCode {
-
-    SUCCESS(200, "The request succeeded"),
-    CREATED(201, "A new resource was created"),
-    NO_CONTENT(204, "No content to send in the response body"),
-    BAD_REQUEST(400, "Missing required field name"),
-    UNAUTHORIZED(401, "Invalid access token"),
-    NOT_FOUND(404, "Cannot find requested resource");
+    SUCCESS(200), CREATED(201), O_CONTENT(204), BAD_REQUEST(400), UNAUTHORIZED(401), NOT_FOUND(404);
 
     public  final int code;
-    public final String message;
 
-    StatusCode(int code, String message){
+    StatusCode(int code){
         this.code = code;
-        this.message = message;
     }
+
+    public int getCode() {
+        return code;
+    }
+
 }
