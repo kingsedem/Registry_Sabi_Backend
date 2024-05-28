@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Registry Backend Smoke Suite" >
+    <test name="Create User Tests Cases">
+        <classes>
+            <class name="userManagement.CreateUsers" />
+        </classes>
+    </test>
+</suite>
