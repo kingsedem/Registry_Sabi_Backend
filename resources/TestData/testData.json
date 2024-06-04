@@ -1,5 +1,6 @@
 {
   "createUser": "/api/v1/users/public",
   "login": "/api/v1/users/login/public",
-  "deleteUser": "/api/v1/admins/users/:id"
+  "deleteUser": "/api/v1/admins/users/:id",
+  "updateUser": "/api/v1/users/:userId/account/:status"
 }
