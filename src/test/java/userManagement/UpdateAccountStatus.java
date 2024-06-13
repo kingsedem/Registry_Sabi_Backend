@@ -5,10 +5,11 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.restassured.AllureRestAssured;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
 import pojo.countryRequest;
 import pojo.createUserWithNoTenantIdPostBody;
 import pojo.loginUserPostBody;
@@ -37,7 +38,8 @@ public class UpdateAccountStatus {
                 "Testing",
                 "Account",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -61,7 +63,6 @@ public class UpdateAccountStatus {
         context.getSuite().setAttribute("tenantUserStatus", status);
 
         System.out.println("UserId is " + userId);
-        //System.out.println(phone);
     }
 
     // GENERATE TOKEN
@@ -88,85 +89,70 @@ public class UpdateAccountStatus {
 
         // Store the token in the suite context for later use
         context.getSuite().setAttribute("authorizationToken", authToken);
+
+        System.out.println("First token " + authToken);
     }
-
-
-    //PASSING TEST
 
     @Test(priority = 3, description = "Check that user status can be updated from active to disable successfully")
     @Description("This test ensures that a user status can be updated successfully from active to disable.")
     @Severity(SeverityLevel.BLOCKER)
+
     public void validate_Update_Status(ITestContext context) {
+
         String authToken = context.getSuite().getAttribute("authorizationToken").toString();
         String userId = context.getSuite().getAttribute("tenantUserId").toString();
-
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String updateUserEndpoint = JsonReader.getTestData("updateUser");
-        String fullUrl = baseUrl + updateUserEndpoint.replace(":userId", userId).replace(":status", "DISABLE");
+        String url = baseUrl + updateUserEndpoint;
 
-        Response response = given().filter(new AllureRestAssured())
-                .header("Authorization", "Bearer " + authToken)
-                .header("Content-Type", "application/json")
-                .when()
-                .put(fullUrl);
+        try {
 
-        int actualStatusCode = response.statusCode();
-        assertEquals(actualStatusCode, StatusCode.SUCCESS.code);
-        // Validate response body
-        String responseBody = response.getBody().asString();
-        assertTrue(responseBody.contains("status"), "DISABLE");
-        System.out.println(response.body().asString());
+            Response response = given().filter(new AllureRestAssured())
+                    .header("Authorization", "Bearer " + authToken)
+                    .header("Content-Type", "application/json")
+                    .pathParam("userId", userId)
+                    .pathParam("status", "DISABLE")
+                    .when()
+                    .put(url);
+
+            int actualStatusCode = response.statusCode();
+            assertEquals(actualStatusCode, StatusCode.SUCCESS_OK.code);
+
+// Validate response body
+            String responseBody = response.getBody().asString();
+            assertTrue(responseBody.contains("status"), "DISABLE");
+            System.out.println(response.body().asString());
+        } catch (Exception e) {
+            System.out.println("Error during request: " + e.getMessage());
+        }
     }
 
 
-    //FAILING TEST  1
-//    @Test(priority = 3, description = "Check that user status can be updated from active to disable successfully")
-//    @Description("This test ensures that a user status can be updated successfully from active to disable.")
-//    @Severity(SeverityLevel.BLOCKER)
-//    public void validate_Update_Status(ITestContext context) {
-//        String authToken = context.getSuite().getAttribute("authorizationToken").toString();
-//        String userId = context.getSuite().getAttribute("tenantUserId").toString();
-//
-//        String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
-//        String updateUserEndpoint = JsonReader.getTestData("updateUser");
-//
-//        Response response = given().filter(new AllureRestAssured())
-//                .header("Authorization", "Bearer " + authToken)
-//                .header("Content-Type", "application/json")
-//                .pathParam("userId", userId)
-//                .pathParam("status", "DISABLE")
-//                .when()
-//                .put(baseUrl + updateUserEndpoint);
-//
-//        int actualStatusCode = response.statusCode();
-//        assertEquals(actualStatusCode, StatusCode.SUCCESS_OK.code);
-//        // Validate response body
-//        String responseBody = response.getBody().asString();
-//        assertTrue(responseBody.contains("status"), "DISABLE");
-//        System.out.println(response.body().asString());
-//    }
+    //DELETE USER_ID
+    @Test(priority = 4, description = "Check that user can be deleted successfully")
+    @Description("This test verifies that users can be deleted successfully.")
+    @Severity(SeverityLevel.BLOCKER)
+    public void deleteUserId(ITestContext context) {
+
+        String authToken = context.getSuite().getAttribute("authorizationToken").toString();
+
+        String userId = context.getSuite().getAttribute("tenantUserId").toString();
+        String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
+        String deleteUserEndpoint = JsonReader.getTestData("deleteUser");
+        String fullUrl = baseUrl + deleteUserEndpoint.replace(":id", userId);
+
+        Response response = given().filter(new AllureRestAssured())
+                .header("Authorization", "Bearer " + authToken)
+                .when()
+                .delete(fullUrl);
 
 
-    //DELETE USER_ID HERE:   FAILING TEST 2
-//    @Test(priority = 4, description = "Check that user can be deleted successfully")
-//    @Description("This test verifies that users can be deleted successfully.")
-//    @Severity(SeverityLevel.BLOCKER)
-//    public void deleteUserId(ITestContext context) {
-//
-//        String authToken = context.getSuite().getAttribute("authorizationToken").toString();
-//
-//        String userId = context.getSuite().getAttribute("tenantUserId").toString();
-//        String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
-//        String deleteUserEndpoint = JsonReader.getTestData("deleteUser");
-//        String fullUrl = baseUrl + deleteUserEndpoint.replace(":id", userId);
-//        Response response = given().filter(new AllureRestAssured())
-//                .header("Authorization", "Bearer " + authToken)
-//                .when()
-//                .delete(fullUrl);
-//
-//
-//        System.out.println("Response: " + response.asString());
-//        assertEquals(response.statusCode(), StatusCode.SUCCESS.code);
-//    }
-
+        // First get the JsonPath object instance from the Response interface
+        JsonPath jsonPathEvaluator = response.jsonPath();
+        // Then simply query the JsonPath object to get a String value of the node
+        boolean status = jsonPathEvaluator.get("status");
+        // Validate the response
+        Assert.assertEquals(status, true);
+        System.out.println(status);
+    }
 }

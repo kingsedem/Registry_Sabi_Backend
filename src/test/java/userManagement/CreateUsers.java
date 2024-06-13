@@ -36,7 +36,8 @@ public class CreateUsers {
                 "Testing",
                 "Account",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -76,7 +77,8 @@ public class CreateUsers {
                 "TestTenantAdmin",
                 "User",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -110,7 +112,8 @@ public class CreateUsers {
                 "TestTenantAdmin",
                 "User",
                 countryRequestData,
-                phone);  //Existing Phone number
+                phone,
+                false);  //Existing Phone number
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -195,7 +198,8 @@ public class CreateUsers {
                 "John",
                 "Jack",
                  countryRequestData,
-                "0902300303"); //Invalid Phone number not matching Country (Nigeria)
+                "0902300303",
+                false); //Invalid Phone number not matching Country (Nigeria)
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -226,7 +230,8 @@ public class CreateUsers {
                 "Kelly",
                 "Jack",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -257,7 +262,8 @@ public class CreateUsers {
                 "Kelly",
                 "Jack",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -288,7 +294,7 @@ public class CreateUsers {
                 "Kelly",
                 "Jack",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(), false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -319,7 +325,8 @@ public class CreateUsers {
                 "Kelly",
                 "Jack",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -350,7 +357,8 @@ public class CreateUsers {
                 "Kelly",
                 "Jack",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -381,7 +389,8 @@ public class CreateUsers {
                 "Kelly",
                 "Jack",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -412,7 +421,8 @@ public class CreateUsers {
                 "Kelly",
                 "Jack",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -443,7 +453,8 @@ public class CreateUsers {
                 "Kelly",
                 "Jack",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -473,7 +484,8 @@ public class CreateUsers {
                 "Ke", //First name less than three characters
                 "Jack",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -503,7 +515,8 @@ public class CreateUsers {
                 "Kelly",
                 "Ja", //last name less than three characters
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");
@@ -535,7 +548,8 @@ public class CreateUsers {
                 "Kelly",
                 "Jack",
                 countryRequestData,
-                userRandomPhoneNumber());
+                userRandomPhoneNumber(),
+                false);
 
         String baseUrl = PropertyReader.propertyReader("config.properties", "devBaseUrl");
         String createUserEndpoint = JsonReader.getTestData("createUser");

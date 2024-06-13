@@ -1,0 +1,45 @@
+<div>POST to https://dfs-registry-dev.sabi.am/api/v1/users/public</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;username&quot;: &quot;vxuAQO9031717502869719@acname.com&quot;,
+    &quot;password&quot;: &quot;@Sabisabi123&quot;,
+    &quot;role&quot;: &quot;TENANT_SUPER_ADMIN&quot;,
+    &quot;firstName&quot;: &quot;Ke&quot;,
+    &quot;lastName&quot;: &quot;Jack&quot;,
+    &quot;country&quot;: {
+        &quot;name&quot;: &quot;Nigeria&quot;,
+        &quot;code&quot;: &quot;NG&quot;,
+        &quot;currency&quot;: &quot;NGN&quot;
+    },
+    &quot;phone&quot;: &quot;08152125175&quot;
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://dfs-registry-dev.sabi.am/api/v1/users/public&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;username&quot;: &quot;vxuAQO9031717502869719@acname.com&quot;,
+    &quot;password&quot;: &quot;@Sabisabi123&quot;,
+    &quot;role&quot;: &quot;TENANT_SUPER_ADMIN&quot;,
+    &quot;firstName&quot;: &quot;Ke&quot;,
+    &quot;lastName&quot;: &quot;Jack&quot;,
+    &quot;country&quot;: {
+        &quot;name&quot;: &quot;Nigeria&quot;,
+        &quot;code&quot;: &quot;NG&quot;,
+        &quot;currency&quot;: &quot;NGN&quot;
+    },
+    &quot;phone&quot;: &quot;08152125175&quot;
+}&#39;
+    </div>
+
