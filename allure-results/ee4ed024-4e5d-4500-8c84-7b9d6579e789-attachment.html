@@ -1,0 +1,30 @@
+<div>POST to https://dfs-registry-dev.sabi.am/api/v1/tenants</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;userId&quot;: &quot;6683ee3fa4c5fe1ac9ad3df5&quot;,
+    &quot;name&quot;: &quot;ABC Company&quot;,
+    &quot;reuseExistKyb&quot;: false
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2thdHN1cGF5LmNvbSIsInN1YiI6IktBVFNVLUFVVEhPUklaQVRJT04iLCJuYmYiOjE3MTk5MjIyNDIsImp0aSI6Ijc4NGI3N2NjLTg0NGQtNDg0NS05NTM1LTY5MTEzZDdmNDExNiIsInBsaWQiOiJLQVRTVS1DTE9VRC1iYzM1NmNlNy00MWI0LTQyMTItODg2MS04YmNhODAzZWUxZjQiLCJwbGVtIjoidGVjaEBrYXRzdXBheS5jb20iLCJwbHR0IjoiV0VCIiwicGxjZCI6IjY2ODNlZTNmYTRjNWZlMWFjOWFkM2RmNSIsInBsdGQiOiJOT1RfQVBQTElDQUJMRSIsInBsdG8iOiJSRUdJU1RSWSIsInBsaGgiOiJLVFM6MmNkNjk2ZWNmMGM0MjZhZjZiMDUiLCJfaWQiOiI2NjgzZWUzZmE0YzVmZTFhYzlhZDNkZjUiLCJjb3VudHJ5Ijp7Im5hbWUiOiJOaWdlcmlhIiwiY29kZSI6Ik5HIiwiY3VycmVuY3kiOiJOR04iLCJfaWQiOiI2NjgzZWUzZjJhZTg2YTMzNzgxZTViZWYifSwiZW1haWxWZXJpZmljYXRpb24iOmZhbHNlLCJmaXJzdE5hbWUiOiJUZXN0aW5nIiwibGFzdE5hbWUiOiJBY2NvdW50IiwicGFzc3dvcmQiOm51bGwsInBob25lIjoiMjM0ODE3NDEzMjgxNyIsInJvbGVzIjpbIlRFTkFOVF9TVVBFUl9BRE1JTiIsIlRFTkFOVF9HTE9CQUwiXSwic3RhdHVzIjoiQUNUSVZFIiwidGVuYW50cyI6W10sInR5cGUiOiJVU0VSIiwidXNlcm5hbWUiOiJqZHpkY2EzMzAxNzE5OTIyMjMyOTc0QGFjbmFtZS5jb20iLCJpYXQiOjE3MTk5MjIyNDIsImV4cCI6MTcyMDUyNzA0Mn0.emjAl2CjzK1Pu1zI32-ye6mhJhRgTyQ79D0MH-wqp10</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://dfs-registry-dev.sabi.am/api/v1/tenants&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2thdHN1cGF5LmNvbSIsInN1YiI6IktBVFNVLUFVVEhPUklaQVRJT04iLCJuYmYiOjE3MTk5MjIyNDIsImp0aSI6Ijc4NGI3N2NjLTg0NGQtNDg0NS05NTM1LTY5MTEzZDdmNDExNiIsInBsaWQiOiJLQVRTVS1DTE9VRC1iYzM1NmNlNy00MWI0LTQyMTItODg2MS04YmNhODAzZWUxZjQiLCJwbGVtIjoidGVjaEBrYXRzdXBheS5jb20iLCJwbHR0IjoiV0VCIiwicGxjZCI6IjY2ODNlZTNmYTRjNWZlMWFjOWFkM2RmNSIsInBsdGQiOiJOT1RfQVBQTElDQUJMRSIsInBsdG8iOiJSRUdJU1RSWSIsInBsaGgiOiJLVFM6MmNkNjk2ZWNmMGM0MjZhZjZiMDUiLCJfaWQiOiI2NjgzZWUzZmE0YzVmZTFhYzlhZDNkZjUiLCJjb3VudHJ5Ijp7Im5hbWUiOiJOaWdlcmlhIiwiY29kZSI6Ik5HIiwiY3VycmVuY3kiOiJOR04iLCJfaWQiOiI2NjgzZWUzZjJhZTg2YTMzNzgxZTViZWYifSwiZW1haWxWZXJpZmljYXRpb24iOmZhbHNlLCJmaXJzdE5hbWUiOiJUZXN0aW5nIiwibGFzdE5hbWUiOiJBY2NvdW50IiwicGFzc3dvcmQiOm51bGwsInBob25lIjoiMjM0ODE3NDEzMjgxNyIsInJvbGVzIjpbIlRFTkFOVF9TVVBFUl9BRE1JTiIsIlRFTkFOVF9HTE9CQUwiXSwic3RhdHVzIjoiQUNUSVZFIiwidGVuYW50cyI6W10sInR5cGUiOiJVU0VSIiwidXNlcm5hbWUiOiJqZHpkY2EzMzAxNzE5OTIyMjMyOTc0QGFjbmFtZS5jb20iLCJpYXQiOjE3MTk5MjIyNDIsImV4cCI6MTcyMDUyNzA0Mn0.emjAl2CjzK1Pu1zI32-ye6mhJhRgTyQ79D0MH-wqp10&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;userId&quot;: &quot;6683ee3fa4c5fe1ac9ad3df5&quot;,
+    &quot;name&quot;: &quot;ABC Company&quot;,
+    &quot;reuseExistKyb&quot;: false
+}&#39;
+    </div>
+
